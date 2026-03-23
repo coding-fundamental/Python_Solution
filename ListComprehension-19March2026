@@ -1,0 +1,31 @@
+[expression for item in iterable if condition]
+
+expression → what you want to store
+item → each element in the loop
+iterable → list, range, string, etc.
+condition → optional filter
+
+squares = [i*i for i in range(5)]
+
+evens = [i for i in range(10) if i % 2 == 0]
+
+result = ["Even" if i % 2 == 0 else "Odd" for i in range(5)]
+
+chars = [c.upper() for c in "python"]
+
+words = ["hi", "hello", "python"]
+lengths = [len(word) for word in words]
+
+pairs = [(x, y) for x in [1,2] for y in [3,4]]
+
+nested = [[1,2], [3,4], [5]]
+flat = [item for sub in nested for item in sub]
+
+nums = [-1, -2, 3, 4]
+abs_vals = [abs(x) for x in nums]
+
+nums = [1,2,3,4,5]
+result = [x*x for x in nums if x % 2 == 0]
+
+nums = [1,1,2,2,3]
+unique = list({x for x in nums})
