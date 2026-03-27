@@ -1,0 +1,40 @@
+-- Employee table
+SELECT * FROM employees;
+
+-- id | name | dept | salary
+-- 1  | A    | IT   | 100
+-- 2  | B    | IT   | 200
+-- 3  | C    | HR   | 150
+-- 4  | D    | HR   | 250
+-- 5  | E    | IT   | 300
+
+SELECT dept, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY dept;
+
+-- dept | avg_salary
+-- IT   | 200
+-- HR   | 200
+
+SELECT 
+    name,
+    dept,
+    salary,
+    AVG(salary) OVER (PARTITION BY dept) AS avg_salary
+FROM employees;
+
+-- name | dept | salary | avg_salary
+-- A    | IT   | 100    | 200
+-- B    | IT   | 200    | 200
+-- E    | IT   | 300    | 200
+-- C    | HR   | 150    | 200
+-- D    | HR   | 250    | 200
+
+FOR RANK
+
+SELECT 
+    name,
+    dept,
+    salary,
+    RANK() OVER (PARTITION BY dept ORDER BY salary DESC) AS rank_in_dept
+FROM employees;
